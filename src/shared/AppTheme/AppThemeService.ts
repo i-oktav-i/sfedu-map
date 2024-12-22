@@ -88,5 +88,3 @@ class AppThemeService {
 }
 
 export const appThemeService = new AppThemeService('theme_mode');
-
-console.log('appThemeService', appThemeService);
