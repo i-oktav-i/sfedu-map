@@ -1,0 +1,1 @@
+export { PoisMapWidget } from './PoisMapWidget';

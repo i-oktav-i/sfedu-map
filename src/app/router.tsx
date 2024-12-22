@@ -1,3 +1,4 @@
+import { PoisMapWidget } from '@widgets/PoisMapWidget';
 import { createHashRouter, redirect } from 'react-router';
 import { Layout } from './ui/Layout';
 
@@ -5,6 +6,10 @@ export const router = createHashRouter([
   {
     element: <Layout />,
     children: [
+      {
+        path: '/',
+        element: <PoisMapWidget />,
+      },
       {
         path: '/404',
         element: (

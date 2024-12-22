@@ -108,7 +108,8 @@
       "quoteProperties": "asNeeded",
       "semicolons": "always",
       "trailingCommas": "all"
-    }
+    },
+    "globals": ["ymaps3"]
   },
   "css": {
     "formatter": {
