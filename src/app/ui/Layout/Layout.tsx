@@ -1,4 +1,4 @@
-import { Header } from '@widgets/Header';
+import { HeaderWidget } from '@widgets/HeaderWidget';
 import { FC } from 'react';
 import { Outlet } from 'react-router';
 
@@ -12,7 +12,7 @@ export const Layout: FC = () => {
   return (
     <Theme appearance={theme === 'DARK' ? 'dark' : 'light'} asChild>
       <Flex direction={'column'} width={'100%'} height={'100%'}>
-        <Header />
+        <HeaderWidget />
 
         <Box asChild flexGrow={'1'}>
           <main>

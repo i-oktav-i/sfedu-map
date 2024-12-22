@@ -1,8 +1,9 @@
-import { ThemeSelect } from '@features/ThemeSelect';
 import { Box, Grid, Text } from '@radix-ui/themes';
+import { HeaderProps } from '@shared/contracts';
 import { FC } from 'react';
+import { HeaderThemeSelect } from './HeaderThemeSelect';
 
-export const Header: FC = () => {
+export const Header: FC<HeaderProps> = ({ title, themeSelectProps }) => {
   return (
     <Grid
       asChild
@@ -19,10 +20,10 @@ export const Header: FC = () => {
         </Box>
 
         <Text asChild align={'center'}>
-          <h1>Карта кампусов</h1>
+          <h1>{title}</h1>
         </Text>
 
-        <ThemeSelect />
+        <HeaderThemeSelect {...themeSelectProps} />
       </header>
     </Grid>
   );
