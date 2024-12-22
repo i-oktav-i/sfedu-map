@@ -9,7 +9,9 @@
     "lint": "biome check",
     "lint:fixall": "biome check --write",
     "typecheck": "tsc --noEmit",
-    "preview": "vite preview"
+    "test": "npm run typecheck && npm run lint",
+    "preview": "vite preview",
+    "prepare": "husky"
   },
   "dependencies": {
     "react": "^19.0.0",
@@ -21,6 +23,7 @@
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
     "@vitejs/plugin-react": "^4.3.4",
+    "husky": "^9.1.7",
     "typescript": "^5.7.2",
     "vite": "^6.0.3"
   }
