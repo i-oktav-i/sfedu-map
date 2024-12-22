@@ -15,4 +15,13 @@ export const {
   YMapDefaultSchemeLayer,
   YMapDefaultFeaturesLayer,
   YMapMarker,
+  YMapControls,
+  YMapScaleControl,
+  geolocation,
 } = reactify.module(ymaps3);
+
+const ymaps3Controls = await ymaps3.import('@yandex/ymaps3-controls@0.0.1');
+
+export const { YMapGeolocationControl, YMapZoomControl } = reactify.module(ymaps3Controls);
+
+export const userPosition = await geolocation.getPosition();
