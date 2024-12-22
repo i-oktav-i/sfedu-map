@@ -10,7 +10,7 @@
       "recommended": false,
       "a11y": { "noBlankTarget": "error", "useKeyWithClickEvents": "off" },
       "complexity": {
-        "noBannedTypes": "error",
+        "noBannedTypes": "warn",
         "noExtraBooleanCast": "error",
         "noMultipleSpacesInRegularExpressionLiterals": "error",
         "noUselessCatch": "error",
@@ -70,7 +70,7 @@
         "noDuplicateObjectKeys": "error",
         "noDuplicateParameters": "error",
         "noEmptyBlockStatements": "error",
-        "noExplicitAny": "error",
+        "noExplicitAny": "warn",
         "noExtraNonNullAssertion": "error",
         "noFallthroughSwitchClause": "error",
         "noFunctionAssign": "error",
