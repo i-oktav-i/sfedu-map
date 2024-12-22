@@ -1,4 +1,4 @@
-import { Box, Grid, Text } from '@radix-ui/themes';
+import { Box, Grid, Heading } from '@radix-ui/themes';
 import { HeaderProps } from '@shared/contracts';
 import { FC } from 'react';
 import { HeaderThemeSelect } from './HeaderThemeSelect';
@@ -19,9 +19,9 @@ export const Header: FC<HeaderProps> = ({ title, themeSelectProps }) => {
           <img src={'/favicon.svg'} alt={'logo'} />
         </Box>
 
-        <Text asChild align={'center'}>
-          <h1>{title}</h1>
-        </Text>
+        <Heading as="h1" align={'center'} size={{ initial: '1', sm: '5' }}>
+          {title}
+        </Heading>
 
         <HeaderThemeSelect {...themeSelectProps} />
       </header>

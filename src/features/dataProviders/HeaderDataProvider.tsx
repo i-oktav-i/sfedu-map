@@ -1,3 +1,4 @@
+import { GlobeIcon, MoonIcon, SunIcon } from '@radix-ui/react-icons';
 import { AppThemeMode, useAppTheme } from '@shared/AppTheme';
 import { HeaderProps } from '@shared/contracts';
 import { useLocale } from '@shared/locale';
@@ -13,9 +14,21 @@ export const HeaderDataProvider: FC<HeaderDataProviderProps> = ({ Layout }) => {
 
   const themeSelectOptions = useMemo(
     () => [
-      { value: AppThemeMode.LIGHT, label: interpolate('header.themeSelect.light') },
-      { value: AppThemeMode.DARK, label: interpolate('header.themeSelect.dark') },
-      { value: AppThemeMode.AUTO, label: interpolate('header.themeSelect.auto') },
+      {
+        value: AppThemeMode.LIGHT,
+        label: interpolate('header.themeSelect.light'),
+        icon: <SunIcon />,
+      },
+      {
+        value: AppThemeMode.DARK,
+        label: interpolate('header.themeSelect.dark'),
+        icon: <MoonIcon />,
+      },
+      {
+        value: AppThemeMode.AUTO,
+        label: interpolate('header.themeSelect.auto'),
+        icon: <GlobeIcon />,
+      },
     ],
     [],
   );

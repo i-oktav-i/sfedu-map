@@ -1,4 +1,5 @@
 import { AppThemeMode } from '@shared/AppTheme';
+import { ReactNode } from 'react';
 
 export type HeaderProps = {
   title: string;
@@ -6,7 +7,7 @@ export type HeaderProps = {
 };
 
 export type HeaderThemeSelectProps = {
-  options: { value: AppThemeMode; label: string }[];
+  options: { value: AppThemeMode; label: string; icon: ReactNode }[];
   value: AppThemeMode;
   onChange: (value: AppThemeMode) => void;
 };
