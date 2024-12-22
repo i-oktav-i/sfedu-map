@@ -1,16 +1,22 @@
 import { createHashRouter, redirect } from 'react-router';
+import { Layout } from './ui/Layout';
 
 export const router = createHashRouter([
   {
-    path: '/404',
-    element: (
-      <div>
-        <h1>404</h1>
-      </div>
-    ),
-  },
-  {
-    path: '*',
-    loader: () => redirect('/404'),
+    element: <Layout />,
+    children: [
+      {
+        path: '/404',
+        element: (
+          <div>
+            <h1>404</h1>
+          </div>
+        ),
+      },
+      {
+        path: '*',
+        loader: () => redirect('/404'),
+      },
+    ],
   },
 ]);
