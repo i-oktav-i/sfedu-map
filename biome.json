@@ -105,5 +105,21 @@
       "semicolons": "always",
       "trailingCommas": "all"
     }
+  },
+  "css": {
+    "formatter": {
+      "indentStyle": "space",
+      "indentWidth": 2,
+      "lineEnding": "lf",
+      "lineWidth": 100,
+      "enabled": true,
+      "quoteStyle": "double"
+    },
+    "linter": {
+      "enabled": true
+    },
+    "assists": {
+      "enabled": true
+    }
   }
 }
