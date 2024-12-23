@@ -1,0 +1,1 @@
+export { poisList } from './poisList';
