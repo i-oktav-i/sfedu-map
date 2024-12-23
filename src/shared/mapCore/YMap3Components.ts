@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ComponentProps } from 'react';
 import ReactDOM from 'react-dom';
 
 await ymaps3.ready;
@@ -21,7 +21,12 @@ export const {
 } = reactify.module(ymaps3);
 
 const ymaps3Controls = await ymaps3.import('@yandex/ymaps3-controls@0.0.1');
+const ymaps3Clusterer = await ymaps3.import('@yandex/ymaps3-clusterer@0.0.1');
 
 export const { YMapGeolocationControl, YMapZoomControl } = reactify.module(ymaps3Controls);
+export const { clusterByGrid } = ymaps3Clusterer;
+export const { YMapClusterer } = reactify.module(ymaps3Clusterer);
+
+export type YMapClustererProps = ComponentProps<typeof YMapClusterer>;
 
 export const userPosition = await geolocation.getPosition();

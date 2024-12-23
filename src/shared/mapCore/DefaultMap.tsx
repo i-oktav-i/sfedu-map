@@ -1,6 +1,5 @@
 import { Box } from '@radix-ui/themes';
-import { FC, useRef } from 'react';
-import { YMap as YMapType } from 'ymaps3';
+import { FC, ReactNode } from 'react';
 import {
   YMap,
   YMapControls,
@@ -14,22 +13,16 @@ import {
 
 type DefaultMapProps = {
   theme: 'light' | 'dark';
+  children?: ReactNode;
 };
 
-export const DefaultMap: FC<DefaultMapProps> = ({ theme }) => {
-  const mapRef = useRef<YMapType>(null);
-
-  console.log('mapRef.current', mapRef.current);
-
+export const DefaultMap: FC<DefaultMapProps> = ({ theme, children }) => {
   return (
     <Box asChild width={'100%'} height={'100%'} position={'relative'}>
       <YMap
         location={useDefault({ center: userPosition.coords, zoom: 9 })}
         theme={theme}
         copyrightsPosition="top right"
-        ref={(node) => {
-          console.log('node', node);
-        }}
       >
         <YMapDefaultSchemeLayer />
         <YMapDefaultFeaturesLayer />
@@ -38,6 +31,8 @@ export const DefaultMap: FC<DefaultMapProps> = ({ theme }) => {
           <YMapZoomControl duration={200} easing={'linear'} />
           <YMapGeolocationControl easing={'linear'} duration={200} />
         </YMapControls>
+
+        {children}
       </YMap>
     </Box>
   );
