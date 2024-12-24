@@ -1,30 +1,20 @@
-import { Box, Grid, Heading } from '@radix-ui/themes';
 import { HeaderProps } from '@shared/contracts';
 import { FC } from 'react';
 import { HeaderThemeSelect } from './HeaderThemeSelect';
+import { GridContainer, LogoContainer, Title } from './styles';
 
 export const Header: FC<HeaderProps> = ({ title, themeSelectProps }) => {
   return (
-    <Grid
-      asChild
-      columns={'20% 1fr 20%'}
-      rows={'auto'}
-      justify={'between'}
-      align={'center'}
-      py={'3'}
-      px={'6'}
-    >
+    <GridContainer asChild>
       <header>
-        <Box asChild width={'40px'} height={'40px'} style={{ borderRadius: '50%' }}>
+        <LogoContainer asChild>
           <img src={'/favicon.svg'} alt={'logo'} />
-        </Box>
+        </LogoContainer>
 
-        <Heading as="h1" align={'center'} size={{ initial: '1', sm: '5' }}>
-          {title}
-        </Heading>
+        <Title>{title}</Title>
 
         <HeaderThemeSelect {...themeSelectProps} />
       </header>
-    </Grid>
+    </GridContainer>
   );
 };
