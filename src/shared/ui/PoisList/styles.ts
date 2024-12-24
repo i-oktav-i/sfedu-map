@@ -1,5 +1,6 @@
 import { Box, Flex, Text } from '@radix-ui/themes';
 import { provideDefaultProps } from '@shared/utils';
+import { container, listWrapper } from './styles.css';
 
 const indent = { initial: '0', sm: '4' };
 
@@ -8,21 +9,15 @@ export const Container = provideDefaultProps(Flex, {
   top: indent,
   left: indent,
   bottom: indent,
-  style: { zIndex: 1000 },
   width: { initial: '100%', sm: '400px' },
+  className: container,
 });
 
 export const ListWrapper = provideDefaultProps(Box, {
   flexGrow: '1',
   width: { initial: '100%', sm: '400px' },
   overflow: 'auto',
-  style: {
-    background: 'var(--color-panel-solid)',
-    borderRadius: 'var(--radius-5)',
-    boxShadow: 'var(--shadow-6)',
-    listStyle: 'none',
-    padding: '0',
-  },
+  className: listWrapper,
 });
 
 export const PoiName = provideDefaultProps(Text, {
