@@ -8,7 +8,7 @@ export const Header: FC<HeaderProps> = ({ title, themeSelectProps }) => {
     <GridContainer asChild>
       <header>
         <LogoContainer asChild>
-          <img src={'/favicon.svg'} alt={'logo'} />
+          <img src={'/sfedu-map/favicon.svg'} alt={'logo'} />
         </LogoContainer>
 
         <Title>{title}</Title>
