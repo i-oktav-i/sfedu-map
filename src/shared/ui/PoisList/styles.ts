@@ -3,10 +3,11 @@ import { provideDefaultProps } from '@shared/utils';
 import { container, listWrapper } from './styles.css';
 
 const indent = { initial: '0', sm: '4' };
+const topIndent = { initial: '50%', sm: '4' };
 
 export const Container = provideDefaultProps(Flex, {
   position: 'absolute',
-  top: indent,
+  top: topIndent,
   left: indent,
   bottom: indent,
   width: { initial: '100%', sm: '400px' },
