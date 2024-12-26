@@ -1,9 +1,9 @@
 import { HeaderProps } from '@shared/contracts';
 import { FC } from 'react';
-import { HeaderThemeSelect } from './HeaderThemeSelect';
-import { GridContainer, LogoContainer, Title } from './styles';
+import { HeaderSelect } from './HeaderSelect';
+import { GridContainer, LogoContainer, SelectsContainer, Title } from './styles';
 
-export const Header: FC<HeaderProps> = ({ title, themeSelectProps }) => {
+export const Header: FC<HeaderProps> = ({ title, themeSelectProps, localeSelectProps }) => {
   return (
     <GridContainer asChild>
       <header>
@@ -13,7 +13,11 @@ export const Header: FC<HeaderProps> = ({ title, themeSelectProps }) => {
 
         <Title>{title}</Title>
 
-        <HeaderThemeSelect {...themeSelectProps} />
+        <SelectsContainer>
+          <HeaderSelect {...themeSelectProps} />
+
+          <HeaderSelect {...localeSelectProps} />
+        </SelectsContainer>
       </header>
     </GridContainer>
   );

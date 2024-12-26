@@ -1,8 +1,8 @@
-import { Box, Grid, Heading } from '@radix-ui/themes';
+import { Box, Flex, Grid, Heading } from '@radix-ui/themes';
 import { provideDefaultProps } from '@shared/utils';
 
 export const GridContainer = provideDefaultProps(Grid, {
-  columns: '20% 1fr 20%',
+  columns: '1fr 1fr 1fr',
   rows: 'auto',
   justify: 'between',
   align: 'center',
@@ -21,4 +21,9 @@ export const Title = provideDefaultProps(Heading, {
   as: 'h1',
   size: { initial: '1', sm: '5' },
   align: 'center',
+});
+
+export const SelectsContainer = provideDefaultProps(Flex, {
+  gap: '4',
+  justify: 'end',
 });

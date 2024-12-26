@@ -1,8 +1,11 @@
 import { GlobeIcon, MoonIcon, SunIcon } from '@radix-ui/react-icons';
+import { Box } from '@radix-ui/themes';
 import { AppThemeMode, useAppTheme } from '@shared/AppTheme';
 import { HeaderProps } from '@shared/contracts';
-import { useLocale } from '@shared/locale';
+import { Locale, useLocale, useLocaleType } from '@shared/locale';
 import { FC, useMemo } from 'react';
+import enFlag from './icons/en.svg';
+import ruFlag from './icons/ru.svg';
 
 export type HeaderDataProviderProps = {
   Layout: FC<HeaderProps>;
@@ -10,6 +13,7 @@ export type HeaderDataProviderProps = {
 
 export const HeaderDataProvider: FC<HeaderDataProviderProps> = ({ Layout }) => {
   const { themeMode, setThemeMode } = useAppTheme();
+  const { locale, setLocale } = useLocaleType();
   const { interpolate } = useLocale();
 
   const themeSelectOptions = useMemo(
@@ -33,6 +37,30 @@ export const HeaderDataProvider: FC<HeaderDataProviderProps> = ({ Layout }) => {
     [],
   );
 
+  const localeSelectOptions = useMemo(
+    () => [
+      {
+        value: Locale.en,
+        label: interpolate('header.localeSelect.en'),
+        icon: (
+          <Box width="16px" height="16px" asChild>
+            <img src={enFlag} alt="en" />
+          </Box>
+        ),
+      },
+      {
+        value: Locale.ru,
+        label: interpolate('header.localeSelect.ru'),
+        icon: (
+          <Box width="16px" height="16px" asChild>
+            <img src={ruFlag} alt="ru" />
+          </Box>
+        ),
+      },
+    ],
+    [],
+  );
+
   const themeSelectProps = useMemo(
     () => ({
       options: themeSelectOptions,
@@ -42,5 +70,20 @@ export const HeaderDataProvider: FC<HeaderDataProviderProps> = ({ Layout }) => {
     [themeMode, setThemeMode, themeSelectOptions],
   );
 
-  return <Layout title={interpolate('header.pageTitle')} themeSelectProps={themeSelectProps} />;
+  const localeSelectProps = useMemo(
+    () => ({
+      options: localeSelectOptions,
+      value: locale,
+      onChange: setLocale,
+    }),
+    [locale, setLocale, localeSelectOptions],
+  );
+
+  return (
+    <Layout
+      title={interpolate('header.pageTitle')}
+      themeSelectProps={themeSelectProps}
+      localeSelectProps={localeSelectProps}
+    />
+  );
 };

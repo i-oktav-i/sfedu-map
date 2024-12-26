@@ -1,8 +1,17 @@
 import { Box, Flex, Select } from '@radix-ui/themes';
-import { HeaderThemeSelectProps } from '@shared/contracts';
-import { FC } from 'react';
+import { ReactNode } from 'react';
 
-export const HeaderThemeSelect: FC<HeaderThemeSelectProps> = ({ options, value, onChange }) => {
+export type HeaderSelectProps<Option extends string> = {
+  options: { value: Option; label: string; icon: ReactNode }[];
+  value: Option;
+  onChange: (value: Option) => void;
+};
+
+export const HeaderSelect = <Option extends string>({
+  options,
+  value,
+  onChange,
+}: HeaderSelectProps<Option>) => {
   const selectedOption = options.find((option) => option.value === value);
 
   if (!selectedOption) return null;

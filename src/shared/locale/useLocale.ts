@@ -1,7 +1,19 @@
-import { ruInterpolationClient } from './ruLocale';
+import { useEffect, useState } from 'react';
 
-const useLocaleReturn = { interpolate: ruInterpolationClient.interpolate } as const;
+import { enInterpolationClient } from './enLocale';
+import { localeClient } from './localeClient';
+import { ruInterpolationClient } from './ruLocale';
+import { Locale } from './types';
+
+const localesMap = {
+  en: enInterpolationClient,
+  ru: ruInterpolationClient,
+} satisfies Record<Locale, unknown>;
 
 export const useLocale = () => {
-  return useLocaleReturn;
+  const [locale, setLocale] = useState(localeClient.locale);
+
+  useEffect(() => localeClient.subscribe(setLocale), []);
+
+  return localesMap[locale];
 };

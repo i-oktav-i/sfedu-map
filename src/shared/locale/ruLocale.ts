@@ -9,6 +9,10 @@ export const ruInterpolationClient = new InterpolationClient({
         dark: 'Темная',
         auto: 'Системная',
       },
+      localeSelect: {
+        en: 'English',
+        ru: 'Русский',
+      },
     },
     poisList: {
       onMap: 'На карте',
