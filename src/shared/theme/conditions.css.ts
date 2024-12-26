@@ -7,5 +7,5 @@ export const conditions = {
     lg: { '@media': 'screen and (min-width: 1280px)' },
     xl: { '@media': 'screen and (min-width: 1640px)' },
   },
-  defaultCondition: 'mobile',
+  defaultCondition: 'initial',
 } as const;

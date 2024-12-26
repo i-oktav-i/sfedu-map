@@ -10,5 +10,9 @@ export const ruInterpolationClient = new InterpolationClient({
         auto: 'Системная',
       },
     },
+    poisList: {
+      onMap: 'На карте',
+      likeList: 'Cписком',
+    },
   },
 });

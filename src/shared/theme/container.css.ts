@@ -12,11 +12,15 @@ const commonSizes = {
   half: '50%',
   full: '100%',
   auto: 'auto',
+  unset: 'unset',
+  ['fit-content']: 'fit-content',
+  ['max-content']: 'max-content',
+  ['min-content']: 'min-content',
 } as const;
 
 const responsiveProperties = defineProperties({
   ...conditions,
-  defaultCondition: 'mobile',
+  defaultCondition: 'initial',
   properties: {
     display: ['none', 'flex', 'block', 'inline'],
     flexDirection: ['row', 'column'],
