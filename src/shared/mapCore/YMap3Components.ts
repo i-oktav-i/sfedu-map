@@ -4,7 +4,8 @@ import ReactDOM from 'react-dom';
 await ymaps3.ready;
 
 const ymaps3Reactify = await ymaps3.import('@yandex/ymaps3-reactify');
-const reactify = ymaps3Reactify.reactify.bindTo(React, ReactDOM);
+// TODO: remove this line after the issue is fixed
+const reactify = ymaps3Reactify.reactify.bindTo({ ...React, version: '18.0' }, ReactDOM);
 
 export const { useDefault } = reactify;
 
