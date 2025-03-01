@@ -1,4 +1,5 @@
 import { PoisMapProps } from '@shared/contracts';
+import { ymapsAvailable } from '@shared/mapCore';
 import { DefaultMap } from '@shared/mapCore/DefaultMap';
 import { Feature } from '@yandex/ymaps3-types/packages/clusterer';
 import { FC, useMemo } from 'react';
@@ -17,6 +18,8 @@ export const PoisMap: FC<PoisMapProps> = ({ poisListNode, theme, pois }) => {
       })),
     [pois],
   );
+
+  if (!ymapsAvailable) return poisListNode;
 
   return (
     <DefaultMap theme={theme}>

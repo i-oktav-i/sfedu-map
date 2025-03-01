@@ -3,7 +3,7 @@ import { FC, useState } from 'react';
 
 import { PoisListProps } from '@shared/contracts';
 import { useLocale } from '@shared/locale';
-import { YMapContainer } from '@shared/mapCore';
+import { YMapContainer, ymapsAvailable } from '@shared/mapCore';
 
 import { PoisListItem } from './PoisListItem';
 import { Container, ListWrapper } from './styles';
@@ -18,9 +18,11 @@ export const PoisList: FC<PoisListProps> = ({ pois }) => {
 
   const isListViewType = viewType === 'likeList';
 
+  const ContainerComponent = ymapsAvailable ? YMapContainer : 'div';
+
   return (
     <Container asChild className={card({ expanded: isListViewType })}>
-      <YMapContainer>
+      <ContainerComponent>
         <SegmentedControl.Root
           value={viewType}
           onValueChange={setViewType as any}
@@ -44,7 +46,7 @@ export const PoisList: FC<PoisListProps> = ({ pois }) => {
             ))}
           </ul>
         </ListWrapper>
-      </YMapContainer>
+      </ContainerComponent>
     </Container>
   );
 };

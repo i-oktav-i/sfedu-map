@@ -7,8 +7,8 @@ import {
   YMapDefaultSchemeLayer,
   YMapGeolocationControl,
   YMapZoomControl,
+  initialUserPosition,
   useDefault,
-  userPosition,
 } from './YMap3Components';
 
 type DefaultMapProps = {
@@ -20,7 +20,7 @@ export const DefaultMap: FC<DefaultMapProps> = ({ theme, children }) => {
   return (
     <Box asChild width={'100%'} height={'100%'} position={'relative'}>
       <YMap
-        location={useDefault({ center: userPosition.coords, zoom: 9 })}
+        location={useDefault({ center: initialUserPosition.coords, zoom: 14 })}
         theme={theme}
         copyrightsPosition="top right"
       >
