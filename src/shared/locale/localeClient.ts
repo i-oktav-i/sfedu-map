@@ -2,8 +2,10 @@ import { Locale } from './types';
 
 type LocaleChangeCallback = (locale: Locale) => void;
 
+const isCorrectLocaleKey = (key: string): key is Locale => key in Locale;
+
 class LocaleClient {
-  #locale: Locale = 'ru';
+  #locale: Locale = 'en';
 
   #callbacks: LocaleChangeCallback[] = [];
 
@@ -11,9 +13,24 @@ class LocaleClient {
     return this.#locale;
   }
 
+  constructor(private readonly storageKey: string) {
+    const storedLocale = localStorage.getItem(storageKey);
+    const browserLocale = navigator.language.slice(0, 2);
+
+    const isSupportedStoredLocale = storedLocale && isCorrectLocaleKey(storedLocale);
+    const isSupportedBrowserLocale = isCorrectLocaleKey(browserLocale);
+
+    if (isSupportedStoredLocale) {
+      this.#locale = storedLocale;
+    } else if (isSupportedBrowserLocale) {
+      this.#locale = browserLocale;
+    }
+  }
+
   setLocale = (locale: Locale) => {
     this.#locale = locale;
     this.emit();
+    localStorage.setItem(this.storageKey, locale);
   };
 
   subscribe = (callback: LocaleChangeCallback) => {
@@ -33,4 +50,4 @@ class LocaleClient {
   };
 }
 
-export const localeClient = new LocaleClient();
+export const localeClient = new LocaleClient('app_locale');
