@@ -1,4 +1,4 @@
-import { PoisListDataProvider } from '@features/dataProviders';
+import { PoisListDataProvider } from '@features/PoisList';
 import { PoisList } from '@shared/ui';
 import { FC } from 'react';
 

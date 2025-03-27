@@ -1,4 +1,4 @@
-import { PoisMapDataProvider } from '@features/dataProviders';
+import { PoisMapDataProvider } from '@features/PoisMap';
 import { PoisMap } from '@shared/ui';
 import { PoisListWidget } from '@widgets/PoisListWidget';
 import { FC } from 'react';
