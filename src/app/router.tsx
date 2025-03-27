@@ -1,5 +1,9 @@
+// import { ErrorBoundary } from 'react-error-boundary';
+import { Outlet, createHashRouter, redirect } from 'react-router';
+
 import { PoisMapWidget } from '@widgets/PoisMapWidget';
-import { createHashRouter, redirect } from 'react-router';
+import { SomethingWrongWidget } from '@widgets/SomethingWrongWidget';
+
 import { Layout } from './ui/Layout';
 
 export const router = createHashRouter([
@@ -8,19 +12,27 @@ export const router = createHashRouter([
     children: [
       {
         path: '/',
-        element: <PoisMapWidget />,
-      },
-      {
-        path: '/404',
-        element: (
-          <div>
-            <h1>404</h1>
-          </div>
-        ),
-      },
-      {
-        path: '*',
-        loader: () => redirect('/404'),
+        element: <Outlet />,
+        ErrorBoundary: SomethingWrongWidget,
+        children: [
+          {
+            path: '/',
+            element: <PoisMapWidget />,
+            ErrorBoundary: SomethingWrongWidget,
+          },
+          {
+            path: '/404',
+            element: (
+              <div>
+                <h1>404</h1>
+              </div>
+            ),
+          },
+          {
+            path: '*',
+            loader: () => redirect('/404'),
+          },
+        ],
       },
     ],
   },

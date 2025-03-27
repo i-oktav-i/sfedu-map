@@ -18,5 +18,9 @@ export const enInterpolationClient = new InterpolationClient({
       onMap: 'On map',
       likeList: 'As a list',
     },
+    somethingWrong: {
+      title: 'Something went wrong',
+      reload: 'Reload the page',
+    },
   },
 });

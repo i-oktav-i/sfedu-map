@@ -18,5 +18,9 @@ export const ruInterpolationClient = new InterpolationClient({
       onMap: 'На карте',
       likeList: 'Cписком',
     },
+    somethingWrong: {
+      title: 'Что-то пошло не так',
+      reload: 'Перезагрузить страницу',
+    },
   },
 });
