@@ -4,5 +4,10 @@ import { RouterProvider } from 'react-router';
 
 import { router } from './router';
 import './index.css';
+import { RecoilRoot } from 'recoil';
 
-export const App: FC = () => <RouterProvider router={router} />;
+export const App: FC = () => (
+  <RecoilRoot>
+    <RouterProvider router={router} />
+  </RecoilRoot>
+);
