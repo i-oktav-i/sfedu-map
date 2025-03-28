@@ -1,5 +1,6 @@
 import { Box } from '@radix-ui/themes';
-import { FC, ReactNode } from 'react';
+import { FC, ReactNode, Ref } from 'react';
+import { YMap as YMapClass } from 'ymaps3';
 import {
   YMap,
   YMapControls,
@@ -14,15 +15,17 @@ import {
 type DefaultMapProps = {
   theme: 'light' | 'dark';
   children?: ReactNode;
+  ref?: Ref<YMapClass>;
 };
 
-export const DefaultMap: FC<DefaultMapProps> = ({ theme, children }) => {
+export const DefaultMap: FC<DefaultMapProps> = ({ theme, children, ref }) => {
   return (
     <Box asChild width={'100%'} height={'100%'} position={'relative'}>
       <YMap
         location={useDefault({ center: initialUserPosition.coords, zoom: 14 })}
         theme={theme}
         copyrightsPosition="top right"
+        ref={ref}
       >
         <YMapDefaultSchemeLayer />
         <YMapDefaultFeaturesLayer />

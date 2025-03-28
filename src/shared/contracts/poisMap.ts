@@ -4,5 +4,7 @@ import { ReactNode } from 'react';
 export type PoisMapProps = {
   theme: 'light' | 'dark';
   pois: Poi[];
-  poisListNode: ReactNode;
+  selectedPoiId: Poi | null;
+  onPoiSelect: (poi: Poi) => void;
+  children?: ReactNode;
 };
