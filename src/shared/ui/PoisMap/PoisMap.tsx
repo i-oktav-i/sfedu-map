@@ -8,6 +8,7 @@ import { Poi } from '@shared/types';
 import { YMap } from 'ymaps3';
 import { ClusterLayout } from './ClusterLayout';
 import { MarkerLayout } from './MarkerLayout';
+import { FallbackContainer } from './tokens';
 
 type PoisMapFeatureProperties = Poi;
 
@@ -40,7 +41,7 @@ export const PoisMap: FC<PoisMapProps> = ({
     mapRef.current?.setLocation({ center: selectedPoiId.location, duration: 300 });
   }, [selectedPoiId]);
 
-  if (!ymapsAvailable) return <>{children}</>;
+  if (!ymapsAvailable) return <FallbackContainer>{children}</FallbackContainer>;
 
   return (
     <DefaultMap theme={theme} ref={mapRef}>
