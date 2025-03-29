@@ -1,7 +1,7 @@
 // import { ErrorBoundary } from 'react-error-boundary';
 import { Outlet, createHashRouter, redirect } from 'react-router';
 
-import { PoisMapWidget } from '@widgets/PoisMapWidget';
+import { MainPage } from '@pages/MainPage';
 import { SomethingWrongWidget } from '@widgets/SomethingWrongWidget';
 
 import { Layout } from './ui/Layout';
@@ -17,7 +17,7 @@ export const router = createHashRouter([
         children: [
           {
             path: '/',
-            element: <PoisMapWidget />,
+            element: <MainPage />,
             ErrorBoundary: SomethingWrongWidget,
           },
           {

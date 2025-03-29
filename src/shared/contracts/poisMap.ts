@@ -1,10 +1,8 @@
-import { Poi } from '@shared/types';
-import { ReactNode } from 'react';
+import { ChildrenProp, Poi } from '@shared/types';
 
 export type PoisMapProps = {
   theme: 'light' | 'dark';
   pois: Poi[];
   selectedPoiId: Poi | null;
   onPoiSelect: (poi: Poi) => void;
-  children?: ReactNode;
-};
+} & ChildrenProp;

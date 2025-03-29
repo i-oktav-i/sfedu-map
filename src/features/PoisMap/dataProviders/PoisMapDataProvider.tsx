@@ -1,14 +1,16 @@
+import { FC } from 'react';
+
 import { poisList, useSelectedPoiStore } from '@entities/pois';
 import { useAppTheme } from '@shared/AppTheme';
 import { PoisMapProps } from '@shared/contracts';
 import { toLowerCase } from '@shared/text';
-import { FC } from 'react';
+import { ChildrenProp } from '@shared/types';
 
 type PoisMapDataProviderProps = {
   Layout: FC<PoisMapProps>;
-};
+} & ChildrenProp;
 
-export const PoisMapDataProvider: FC<PoisMapDataProviderProps> = ({ Layout }) => {
+export const PoisMapDataProvider: FC<PoisMapDataProviderProps> = ({ Layout, children }) => {
   const { selectedPoi, setSelectedPoi } = useSelectedPoiStore();
   const { theme } = useAppTheme();
 
@@ -18,6 +20,8 @@ export const PoisMapDataProvider: FC<PoisMapDataProviderProps> = ({ Layout }) =>
       pois={poisList}
       selectedPoiId={selectedPoi}
       onPoiSelect={setSelectedPoi}
-    />
+    >
+      {children}
+    </Layout>
   );
 };
