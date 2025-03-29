@@ -1,4 +1,4 @@
-import { poisList } from '@entities/pois';
+import { poisList, useSelectedPoiStore } from '@entities/pois';
 import { PoisListProps } from '@shared/contracts';
 import { FC } from 'react';
 
@@ -7,5 +7,7 @@ export type PoisListDataProviderProps = {
 };
 
 export const PoisListDataProvider: FC<PoisListDataProviderProps> = ({ Layout }) => {
-  return <Layout pois={poisList} />;
+  const { setSelectedPoi } = useSelectedPoiStore();
+
+  return <Layout pois={poisList} onPoiSelect={setSelectedPoi} />;
 };

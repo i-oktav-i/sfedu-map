@@ -10,7 +10,7 @@ import { card, listWrapper, toggler } from './styles.css';
 
 type ViewType = 'onMap' | 'likeList';
 
-export const PoisList: FC<PoisListProps> = ({ pois }) => {
+export const PoisList: FC<PoisListProps> = ({ pois, onPoiSelect }) => {
   const [viewType, setViewType] = useState<ViewType>('onMap');
 
   const { interpolate } = useLocale();
@@ -35,7 +35,7 @@ export const PoisList: FC<PoisListProps> = ({ pois }) => {
         <ul>
           {pois.map((poi) => (
             <li key={poi.id}>
-              <PoisListItem poi={poi} />
+              <PoisListItem poi={poi} onClick={() => onPoiSelect(poi)} />
             </li>
           ))}
         </ul>
