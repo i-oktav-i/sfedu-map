@@ -22,7 +22,7 @@ const responsiveProperties = defineProperties({
   ...conditions,
   defaultCondition: 'initial',
   properties: {
-    display: ['none', 'flex', 'block', 'inline'],
+    display: ['none', 'contents', 'flex', 'block', 'inline'],
     flexDirection: ['row', 'column'],
     justifyContent: [
       'stretch',
@@ -50,6 +50,7 @@ const responsiveProperties = defineProperties({
     border: themeDependentTokensConfig.borders,
     borderRadius: tokensConfig.radii,
     zIndex: tokensConfig.zIndex,
+    boxSizing: ['border-box', 'content-box'],
   },
   shorthands: {
     placeItems: ['justifyContent', 'alignItems'],
