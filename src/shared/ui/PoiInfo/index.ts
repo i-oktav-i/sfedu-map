@@ -1,0 +1,1 @@
+export { PoiInfo } from './PoiInfo';

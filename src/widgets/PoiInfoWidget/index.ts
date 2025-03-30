@@ -1,0 +1,1 @@
+export { PoiInfoWidget } from './PoiInfoWidget';

@@ -8,7 +8,7 @@ import * as styles from './styles.css';
 export type DrawerProps = {
   isOpen: boolean;
   onClose: () => void;
-  title: string;
+  title: ReactNode;
   contentNode?: ReactNode;
 };
 
