@@ -56,6 +56,17 @@ export const tokensConfig = createGlobalTheme(':root', {
     x4: `calc(${baseSize} * 4)`,
   },
   radixColors: radixColors as RadixColors,
+  zIndex: {
+    base: '0',
+    dropdown: '100',
+    sticky: '200',
+    navigation: '300',
+    modal: '400',
+    overlay: '500',
+    tooltip: '600',
+    notification: '700',
+    aboveAll: '9999',
+  },
 });
 
 export const [themeDependentTokensClassName, themeDependentTokensConfig] = createTheme({

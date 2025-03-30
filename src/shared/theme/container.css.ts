@@ -49,6 +49,7 @@ const responsiveProperties = defineProperties({
     minHeight: { ...commonSizes, viewport: '100dvh' },
     border: themeDependentTokensConfig.borders,
     borderRadius: tokensConfig.radii,
+    zIndex: tokensConfig.zIndex,
   },
   shorthands: {
     placeItems: ['justifyContent', 'alignItems'],

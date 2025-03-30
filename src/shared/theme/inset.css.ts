@@ -16,7 +16,7 @@ const additional = {
 const insetProperties = defineProperties({
   ...conditions,
   properties: {
-    position: ['relative', 'absolute', 'fixed', 'sticky'],
+    position: ['relative', 'absolute', 'fixed', 'sticky', 'static'],
     top: { ...additional, ...tokensConfig.space },
     bottom: { ...additional, ...tokensConfig.space },
     left: { ...additional, ...tokensConfig.space },
