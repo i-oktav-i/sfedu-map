@@ -58,14 +58,14 @@ export const tokensConfig = createGlobalTheme(':root', {
   radixColors: radixColors as RadixColors,
   zIndex: {
     base: '0',
-    dropdown: '100',
-    sticky: '200',
-    navigation: '300',
-    modal: '400',
-    overlay: '500',
-    tooltip: '600',
-    notification: '700',
-    aboveAll: '9999',
+    dropdown: '1000',
+    sticky: '2000',
+    navigation: '3000',
+    modal: '4000',
+    overlay: '5000',
+    tooltip: '6000',
+    notification: '7000',
+    aboveAll: '99999',
   },
 });
 
