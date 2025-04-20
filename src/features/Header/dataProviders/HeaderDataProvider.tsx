@@ -27,7 +27,7 @@ export const HeaderDataProvider: FC<HeaderDataProviderProps> = ({ Layout }) => {
         label: interpolate('header.themeSelect.auto'),
       },
     ],
-    [],
+    [interpolate],
   );
 
   const localeSelectOptions = useMemo(
@@ -41,7 +41,7 @@ export const HeaderDataProvider: FC<HeaderDataProviderProps> = ({ Layout }) => {
         label: interpolate('header.localeSelect.ru'),
       },
     ],
-    [],
+    [interpolate],
   );
 
   const themeSelectProps = useMemo(
