@@ -1,0 +1,1 @@
+export { FloorsPlan } from './FloorsPlan';

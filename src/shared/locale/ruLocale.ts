@@ -22,5 +22,10 @@ export const ruInterpolationClient = new InterpolationClient({
       title: 'Что-то пошло не так',
       reload: 'Перезагрузить страницу',
     },
+    floorsPlan: {
+      classRoomAriaLabelPrefix: 'Аудитория №',
+      missingFloorPlan: 'Не удалось загрузить план этажа',
+      loading: 'Загрузка плана этажей',
+    },
   },
 });

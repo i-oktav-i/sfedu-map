@@ -1,3 +1,4 @@
+export type * from './floorsPlan';
 export type * from './header';
 export type * from './poiInfo';
 export type * from './poisLIst';

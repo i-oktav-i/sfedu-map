@@ -5,10 +5,18 @@ import { PoiInfoProps } from '@shared/contracts';
 
 export type PoiInfoDataProviderProps = {
   Layout: FC<PoiInfoProps>;
-};
+} & Pick<PoiInfoProps, 'renderFloorsPlan'>;
 
-export const PoiInfoDataProvider: FC<PoiInfoDataProviderProps> = ({ Layout }) => {
+export const PoiInfoDataProvider: FC<PoiInfoDataProviderProps> = ({ Layout, renderFloorsPlan }) => {
   const { selectedPoi, setSelectedPoi } = useSelectedPoiStore();
 
-  return <Layout isOpen={!!selectedPoi} onClose={() => setSelectedPoi(null)} poi={selectedPoi} />;
+  return (
+    <Layout
+      isOpen={!!selectedPoi}
+      onClose={() => setSelectedPoi(null)}
+      poi={selectedPoi}
+      renderFloorsPlan={renderFloorsPlan}
+      onInteractiveElementClick={alert}
+    />
+  );
 };

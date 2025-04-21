@@ -22,5 +22,10 @@ export const enInterpolationClient = new InterpolationClient({
       title: 'Something went wrong',
       reload: 'Reload the page',
     },
+    floorsPlan: {
+      classRoomAriaLabelPrefix: 'Classroom №',
+      missingFloorPlan: 'Failed to load the floor plan',
+      loading: 'Loading floors plan',
+    },
   },
 });
