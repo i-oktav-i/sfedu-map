@@ -1,7 +1,6 @@
-import { Card } from '@radix-ui/themes';
 import { Poi } from '@shared/types';
 import { FC } from 'react';
-import { ButtonWrapper, PoiAddress, PoiName } from './styles';
+import { ButtonWrapper, ListItemContainer, PoiAddress, PoiName } from './tokens';
 
 export type PoisListItemProps = {
   poi: Poi;
@@ -10,7 +9,7 @@ export type PoisListItemProps = {
 
 export const PoisListItem: FC<PoisListItemProps> = ({ poi: { address, name }, onClick }) => {
   return (
-    <Card asChild>
+    <ListItemContainer asChild>
       <button onClick={onClick}>
         <ButtonWrapper>
           <PoiName>{name}</PoiName>
@@ -18,6 +17,6 @@ export const PoisListItem: FC<PoisListItemProps> = ({ poi: { address, name }, on
           <PoiAddress>{address}</PoiAddress>
         </ButtonWrapper>
       </button>
-    </Card>
+    </ListItemContainer>
   );
 };

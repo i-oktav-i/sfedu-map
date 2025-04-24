@@ -5,8 +5,8 @@ import { PoisListProps } from '@shared/contracts';
 import { useLocale } from '@shared/locale';
 
 import { PoisListItem } from './PoisListItem';
-import { Container, ListWrapper } from './styles';
 import { card, listWrapper, toggler } from './styles.css';
+import { Container, ListWrapper } from './tokens';
 
 type ViewType = 'onMap' | 'likeList';
 

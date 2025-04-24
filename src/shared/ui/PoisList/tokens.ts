@@ -1,5 +1,6 @@
-import { Box, Flex, Text } from '@radix-ui/themes';
+import { Box, Card, Flex, Text } from '@radix-ui/themes';
 import { provideDefaultProps } from '@shared/utils';
+import { listItemContainer } from './styles.css';
 
 export const Container = provideDefaultProps(Flex, {
   width: { initial: '100%', sm: '400px' },
@@ -28,3 +29,5 @@ export const ButtonWrapper = provideDefaultProps(Flex, {
   direction: 'column',
   gap: '2',
 });
+
+export const ListItemContainer = provideDefaultProps(Card, { className: listItemContainer });

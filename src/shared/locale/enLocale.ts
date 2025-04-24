@@ -23,9 +23,13 @@ export const enInterpolationClient = new InterpolationClient({
       reload: 'Reload the page',
     },
     floorsPlan: {
-      classRoomAriaLabelPrefix: 'Classroom №',
+      classRoomAriaLabel: 'Classroom №{{id}}',
       missingFloorPlan: 'Failed to load the floor plan',
       loading: 'Loading floors plan',
+      floorNumber: 'Floor {{ floorNumber }}',
+      nextFloor: 'Next floor',
+      prevFloor: 'Previous floor',
+      goToFloor: 'Go to floor {{ floorNumber }}',
     },
   },
 });

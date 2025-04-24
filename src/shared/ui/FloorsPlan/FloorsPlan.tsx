@@ -1,56 +1,44 @@
 import { Text } from '@radix-ui/themes';
 import { FloorsPlanProps } from '@shared/contracts';
-import { FC, Suspense, use, useState } from 'react';
+import { FC, Ref } from 'react';
 
-import { FloorPlan } from './FloorPlan';
 import { FloorsPagination } from './FloorsPagination';
-import { FloorsPlansContainer } from './tokens';
+import { FloorPlanContainer, FloorsPlansContainer, LoadingText, Title } from './tokens';
 
-const FloorsPlanWithoutSuspense: FC<FloorsPlanProps> = ({
-  plansHtmlPromise,
-  onInteractiveElementClick,
-  classroomAriaLabelPrefix,
+export const FloorsPlan: FC<FloorsPlanProps> = ({
+  html,
+  isLoading,
+  loadingText,
   missingFloorText,
+  nextButtonProps,
+  prevButtonProps,
+  ref,
+  title,
 }) => {
-  const [currentFloorIndex, setCurrentFloorIndex] = useState(0);
-
-  const plansHtml = use(plansHtmlPromise);
-
-  if (!plansHtml) return null;
-
-  const floorHtml = plansHtml[currentFloorIndex];
+  if (isLoading) {
+    return (
+      <FloorsPlansContainer>
+        <LoadingText>{loadingText}</LoadingText>
+      </FloorsPlansContainer>
+    );
+  }
 
   return (
     <FloorsPlansContainer>
-      <FloorsPagination
-        floorsCount={plansHtml.length}
-        currentFloorIndex={currentFloorIndex}
-        onFloorChange={setCurrentFloorIndex}
-      />
+      <Title>{title}</Title>
 
-      {floorHtml ? (
-        <FloorPlan
-          html={floorHtml}
-          onInteractiveElementClick={onInteractiveElementClick}
-          classroomAriaLabelPrefix={classroomAriaLabelPrefix}
+      <FloorsPagination nextButtonProps={nextButtonProps} prevButtonProps={prevButtonProps} />
+
+      {html ? (
+        <FloorPlanContainer
+          ref={ref as Ref<HTMLDivElement>}
+          dangerouslySetInnerHTML={{ __html: html }}
         />
       ) : (
-        <Text>{missingFloorText}</Text>
+        <FloorPlanContainer>
+          <Text as="p">{missingFloorText}</Text>
+        </FloorPlanContainer>
       )}
     </FloorsPlansContainer>
-  );
-};
-
-export const FloorsPlan: FC<FloorsPlanProps> = (props) => {
-  return (
-    <Suspense
-      fallback={
-        <FloorsPlansContainer>
-          <Text>{props.loadingText}</Text>
-        </FloorsPlansContainer>
-      }
-    >
-      <FloorsPlanWithoutSuspense {...props} />
-    </Suspense>
   );
 };

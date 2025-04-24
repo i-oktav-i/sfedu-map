@@ -7,11 +7,19 @@
   </g>
 
   <g>
-    <rect data-interactive="true" fill="#FF0000" height="170.95" id="112" stroke="#000000" stroke-width="5" transform="matrix(1 0 0 1 0 0)" width="106.33" x="229.86" y="175.67"/>
-    
+    <rect x="268.19" y="14.67" data-interactive="true" fill="#FF0000" height="110.48" id="202"
+      stroke="#000000"
+      stroke-width="5"
+      transform="matrix(1 0 0 1 0 0)" width="79.52" />
   </g>
   <g>
-    <rect data-interactive="true" fill="#FF0000" height="167.48" id="120" stroke="#000000" stroke-width="5" transform="matrix(1 0 0 1 0 0)" width="106.52" x="123.19" y="178.67"/>
+    <rect fill="#FF0000" height="110.95" id="218" stroke="#000000"
+      stroke-width="5" width="83.33"
+      x="184.86" y="14.67" data-interactive="true" />
   </g>
 
+  <g>
+    <path data-interactive="true" d="m173.4,271.2l151.6,-33.2l-144,-38l-107,24l99.4,47.2z"
+      fill="#FF0000" id="220" stroke="#000000" stroke-width="5" />
+  </g>
 </svg>

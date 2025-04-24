@@ -23,9 +23,13 @@ export const ruInterpolationClient = new InterpolationClient({
       reload: 'Перезагрузить страницу',
     },
     floorsPlan: {
-      classRoomAriaLabelPrefix: 'Аудитория №',
+      classRoomAriaLabel: 'Аудитория №{{id}}',
       missingFloorPlan: 'Не удалось загрузить план этажа',
       loading: 'Загрузка плана этажей',
+      floorNumber: 'Этаж {{ floorNumber }}',
+      nextFloor: 'Следующий этаж',
+      prevFloor: 'Предыдущий этаж',
+      goToFloor: 'Перейти на этаж {{ floorNumber }}',
     },
   },
 });

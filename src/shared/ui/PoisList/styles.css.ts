@@ -53,3 +53,5 @@ export const listWrapper = recipe({
     },
   },
 });
+
+export const listItemContainer = container({ size: 'full' });

@@ -1,15 +1,21 @@
-import { Box, Flex } from '@radix-ui/themes';
+import { Box, Text } from '@radix-ui/themes';
 
 import { provideDefaultProps } from '@shared/utils';
 
-import { planContainer } from './styles.css';
+import { floorsPlansContainer, loadingText, planContainer, title } from './styles.css';
 
-export const FloorsPlansContainer = provideDefaultProps(Flex, {
-  width: '100%',
-  height: '300px',
+export const FloorsPlansContainer = provideDefaultProps(Box, {
+  className: floorsPlansContainer,
+});
+
+export const Title = provideDefaultProps(Text, {
+  as: 'p',
   align: 'center',
-  justify: 'center',
-  gap: '2',
+  className: title,
+});
+
+export const LoadingText = provideDefaultProps(Title, {
+  className: loadingText,
 });
 
 export const FloorPlanContainer = provideDefaultProps(Box, {
