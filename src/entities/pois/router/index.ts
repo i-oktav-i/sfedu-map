@@ -1,0 +1,1 @@
+export { SelectedPoiRouterSync } from './SelectedPoiRouterSync';

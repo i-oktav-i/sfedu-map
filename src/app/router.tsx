@@ -16,7 +16,7 @@ export const router = createHashRouter([
         ErrorBoundary: SomethingWrongWidget,
         children: [
           {
-            path: '/',
+            path: '/:id?',
             element: <MainPage />,
             ErrorBoundary: SomethingWrongWidget,
           },
