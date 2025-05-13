@@ -48,6 +48,10 @@ const responsiveProperties = defineProperties({
     minWidth: { ...commonSizes, viewport: '100dvw' },
     minHeight: { ...commonSizes, viewport: '100dvh' },
     border: themeDependentTokensConfig.borders,
+    borderTop: themeDependentTokensConfig.borders,
+    borderBottom: themeDependentTokensConfig.borders,
+    borderLeft: themeDependentTokensConfig.borders,
+    borderRight: themeDependentTokensConfig.borders,
     borderRadius: tokensConfig.radii,
     zIndex: tokensConfig.zIndex,
     boxSizing: ['border-box', 'content-box'],
@@ -57,6 +61,8 @@ const responsiveProperties = defineProperties({
     size: ['width', 'height'],
     maxSize: ['maxWidth', 'maxHeight'],
     minSize: ['minWidth', 'minHeight'],
+    borderX: ['borderLeft', 'borderRight'],
+    borderY: ['borderTop', 'borderBottom'],
   },
 });
 

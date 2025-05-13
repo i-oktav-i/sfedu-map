@@ -1,4 +1,5 @@
 import { InterpolationClient } from './InterpolationClient';
+import { nbsp } from './spesialChars';
 
 export const ruInterpolationClient = new InterpolationClient({
   resource: {
@@ -30,6 +31,33 @@ export const ruInterpolationClient = new InterpolationClient({
       nextFloor: 'Следующий этаж',
       prevFloor: 'Предыдущий этаж',
       goToFloor: 'Перейти на этаж {{ floorNumber }}',
+    },
+    weekDays: {
+      full: {
+        monday: 'Понедельник',
+        tuesday: 'Вторник',
+        wednesday: 'Среда',
+        thursday: 'Четверг',
+        friday: 'Пятница',
+        saturday: 'Суббота',
+        sunday: 'Воскресенье',
+      },
+      short: {
+        monday: 'Пн',
+        tuesday: 'Вт',
+        wednesday: 'Ср',
+        thursday: 'Чт',
+        friday: 'Пт',
+        saturday: 'Сб',
+        sunday: 'Вс',
+      },
+    },
+    schedule: {
+      title: 'Расписание',
+      emptyDay: 'Нет занятий в этот день',
+      dayTitle: 'Расписание на {{day}}',
+      daySelect: 'Выберите день',
+      timeRange: `{{from}}${nbsp}-${nbsp}{{till}}`,
     },
   },
 });
