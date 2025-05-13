@@ -13,5 +13,17 @@ export const PoisListDataProvider: FC<PoisListDataProviderProps> = ({ Layout }) 
 
   const poisList = useMemo(() => getPoisList(locale), [locale]);
 
-  return <Layout pois={poisList} onPoiSelect={setSelectedPoi} />;
+  const pois = useMemo(
+    () =>
+      poisList.flatMap((poi) =>
+        poi.parts.map((part) => ({
+          address: poi.address,
+          name: part,
+          onClick: () => setSelectedPoi(poi),
+        })),
+      ),
+    [poisList, setSelectedPoi],
+  );
+
+  return <Layout pois={pois} />;
 };

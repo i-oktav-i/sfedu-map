@@ -1,6 +1,9 @@
-import { Poi } from '@shared/types';
-
 export type PoisListProps = {
-  pois: Poi[];
-  onPoiSelect: (poi: Poi) => void;
+  pois: PoisListItemProps[];
+};
+
+export type PoisListItemProps = {
+  address: string;
+  name: string;
+  onClick?: () => void;
 };

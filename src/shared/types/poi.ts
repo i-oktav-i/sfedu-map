@@ -6,7 +6,7 @@ export type PoiId = BrandString<typeof poiIdBrandSymbol>;
 
 export type Poi = {
   id: PoiId;
-  name: string;
   address: string;
+  parts: string[];
   location: LngLat;
 };

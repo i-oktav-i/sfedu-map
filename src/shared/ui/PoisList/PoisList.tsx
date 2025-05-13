@@ -10,7 +10,7 @@ import { Container, ListWrapper } from './tokens';
 
 type ViewType = 'onMap' | 'likeList';
 
-export const PoisList: FC<PoisListProps> = ({ pois, onPoiSelect }) => {
+export const PoisList: FC<PoisListProps> = ({ pois }) => {
   const [viewType, setViewType] = useState<ViewType>('onMap');
 
   const { interpolate } = useLocale();
@@ -34,8 +34,8 @@ export const PoisList: FC<PoisListProps> = ({ pois, onPoiSelect }) => {
       <ListWrapper asChild className={listWrapper({ visible: isListViewType })}>
         <ul>
           {pois.map((poi) => (
-            <li key={poi.id}>
-              <PoisListItem poi={poi} onClick={() => onPoiSelect(poi)} />
+            <li key={poi.name}>
+              <PoisListItem {...poi} />
             </li>
           ))}
         </ul>

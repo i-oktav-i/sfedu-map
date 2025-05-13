@@ -1,6 +1,7 @@
 import { PoiInfoProps } from '@shared/contracts';
 import { FC, useMemo } from 'react';
 
+import { Text } from '@radix-ui/themes';
 import { Drawer } from '../Drawer';
 import { TextLineSkeleton } from '../Skeletons';
 
@@ -36,10 +37,18 @@ export const PoiInfo: FC<PoiInfoProps> = ({
     <Drawer
       isOpen={isOpen}
       onClose={onClose}
-      title={poi?.name ?? <TextLineSkeleton />}
+      title={poi?.address ?? <TextLineSkeleton />}
       contentNode={
         <>
-          {poi?.address ?? <TextLineSkeleton />}
+          {poi ? (
+            <ul>
+              {poi.parts.map((part) => (
+                <li key={part}>
+                  <Text>{part}</Text>
+                </li>
+              ))}
+            </ul>
+          ) : null}
 
           {floorsPlanNode}
 

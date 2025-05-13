@@ -1,13 +1,9 @@
-import { Poi } from '@shared/types';
 import { FC } from 'react';
+
+import { PoisListItemProps } from '@shared/contracts';
 import { ButtonWrapper, ListItemContainer, PoiAddress, PoiName } from './tokens';
 
-export type PoisListItemProps = {
-  poi: Poi;
-  onClick?: () => void;
-};
-
-export const PoisListItem: FC<PoisListItemProps> = ({ poi: { address, name }, onClick }) => {
+export const PoisListItem: FC<PoisListItemProps> = ({ address, name, onClick }) => {
   return (
     <ListItemContainer asChild>
       <button onClick={onClick}>
