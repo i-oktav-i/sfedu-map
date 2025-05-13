@@ -1,4 +1,13 @@
-import { FC, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import {
+  Dispatch,
+  FC,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 
 import { fetchFloors } from '@entities/floor';
 import { FloorsPlanProps } from '@shared/contracts';
@@ -9,19 +18,22 @@ import { deferPromise } from '@shared/utils';
 export type FloorsPlanDataProviderProps = {
   poiId: PoiId;
   onInteractiveElementClick: (id: string) => void;
+  currentFloorIndex: number;
+  setCurrentFloorIndex: Dispatch<SetStateAction<number>>;
   Layout: FC<FloorsPlanProps>;
 };
 
 export const FloorsPlanDataProvider: FC<FloorsPlanDataProviderProps> = ({
   Layout,
   poiId,
+  currentFloorIndex,
+  setCurrentFloorIndex,
   onInteractiveElementClick,
 }) => {
   const htmlContainerRef = useRef<HTMLElement>(null);
 
   const [plansHtml, setPlansHtml] = useState<(string | null)[] | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [currentFloorIndex, setCurrentFloorIndex] = useState(0);
 
   const { interpolate } = useLocale();
 
@@ -29,11 +41,11 @@ export const FloorsPlanDataProvider: FC<FloorsPlanDataProviderProps> = ({
     setCurrentFloorIndex((current) =>
       current <= (plansHtml?.length ?? 0) - 1 ? current + 1 : current,
     );
-  }, [plansHtml]);
+  }, [plansHtml, setCurrentFloorIndex]);
 
   const handleDownClick = useCallback(() => {
     setCurrentFloorIndex((current) => (current > 0 ? current - 1 : current));
-  }, []);
+  }, [setCurrentFloorIndex]);
 
   const html = plansHtml ? plansHtml[currentFloorIndex] : null;
   const humanReadableFloorIndex = currentFloorIndex + 1;
@@ -142,7 +154,7 @@ export const FloorsPlanDataProvider: FC<FloorsPlanDataProviderProps> = ({
         element.removeEventListener('keypress', handleEnterKey);
       });
     };
-  }, [currentFloorIndex, onInteractiveElementClick]);
+  }, [html, currentFloorIndex, onInteractiveElementClick, interpolate]);
 
   return (
     <Layout

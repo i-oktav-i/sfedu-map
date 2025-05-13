@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 
 import { useSelectedPoiStore } from '@entities/pois';
 import { PoiInfoProps } from '@shared/contracts';
@@ -13,7 +13,17 @@ export const PoiInfoDataProvider: FC<PoiInfoDataProviderProps> = ({
   renderSchedule,
 }) => {
   const { selectedPoi, setSelectedPoi } = useSelectedPoiStore();
+
+  const [currentFloorIndex, setCurrentFloorIndex] = useState(0);
   const [selectedClassroomId, setSelectedClassroomId] = useState<string | null>(null);
+
+  useEffect(() => {
+    setSelectedClassroomId(null);
+  }, [selectedPoi, currentFloorIndex]);
+
+  useEffect(() => {
+    setCurrentFloorIndex(0);
+  }, [selectedPoi]);
 
   return (
     <Layout
@@ -24,6 +34,8 @@ export const PoiInfoDataProvider: FC<PoiInfoDataProviderProps> = ({
       renderFloorsPlan={renderFloorsPlan}
       renderSchedule={renderSchedule}
       onInteractiveElementClick={setSelectedClassroomId}
+      currentFloorIndex={currentFloorIndex}
+      setCurrentFloorIndex={setCurrentFloorIndex}
     />
   );
 };

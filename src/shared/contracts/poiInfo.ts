@@ -1,5 +1,5 @@
-import { Poi, PoiId } from '@shared/types';
-import { JSX } from 'react';
+import { Poi, PoiId, StrictOmit } from '@shared/types';
+import { Dispatch, JSX, SetStateAction } from 'react';
 
 export type PoiInfoProps = {
   isOpen: boolean;
@@ -8,12 +8,15 @@ export type PoiInfoProps = {
   classroomId: string | null;
   renderFloorsPlan: (params: RenderFloorsPlanParams) => JSX.Element;
   renderSchedule: (params: RenderScheduleParams) => JSX.Element;
-  onInteractiveElementClick: (id: string) => void;
-};
+} & StrictOmit<RenderFloorsPlanParams, 'poiId'> &
+  StrictOmit<RenderScheduleParams, 'poiId' | 'classroomId'>;
 
 export type RenderFloorsPlanParams = {
   poiId: PoiId;
   onInteractiveElementClick: (id: string) => void;
+  currentFloorIndex: number;
+  setCurrentFloorIndex: Dispatch<SetStateAction<number>>;
+};
 
 export type RenderScheduleParams = {
   poiId: PoiId;

@@ -9,10 +9,23 @@ export const PoiInfo: FC<PoiInfoProps> = ({
   onClose,
   poi,
   classroomId,
+  currentFloorIndex,
+  setCurrentFloorIndex,
   renderFloorsPlan,
   onInteractiveElementClick,
   renderSchedule,
 }) => {
+  const floorsPlanNode = useMemo(
+    () =>
+      poi &&
+      renderFloorsPlan({
+        poiId: poi.id,
+        onInteractiveElementClick,
+        currentFloorIndex,
+        setCurrentFloorIndex,
+      }),
+    [poi, renderFloorsPlan, onInteractiveElementClick, currentFloorIndex, setCurrentFloorIndex],
+  );
 
   const scheduleNode = useMemo(
     () => (poi && classroomId ? renderSchedule({ poiId: poi.id, classroomId }) : null),
@@ -28,12 +41,7 @@ export const PoiInfo: FC<PoiInfoProps> = ({
         <>
           {poi?.address ?? <TextLineSkeleton />}
 
-          {poi
-            ? renderFloorsPlan({
-                poiId: poi.id,
-                onInteractiveElementClick,
-              })
-            : null}
+          {floorsPlanNode}
 
           {scheduleNode}
         </>
