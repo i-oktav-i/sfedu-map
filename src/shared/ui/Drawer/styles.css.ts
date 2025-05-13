@@ -4,12 +4,13 @@ import { recipe } from '@vanilla-extract/recipes';
 export const drawerContainer = recipe({
   base: [
     container({
+      display: 'flex',
+      flexDirection: 'column',
       width: 'full',
       height: 'full',
       backgroundColor: 'primary',
       border: { initial: 'none', sm: 'primary' },
       zIndex: 'modal',
-      padding: 'x4',
       boxSizing: 'border-box',
     }),
     inset({ position: 'absolute', inset: 'x0' }),
@@ -35,6 +36,12 @@ export const drawerContainer = recipe({
   },
 });
 
-export const title = container({ paddingBottom: 'x8' });
+export const title = container({ padding: 'x4', borderBottom: 'primary' });
+
+export const contentContainer = container({
+  overflowY: 'auto',
+  padding: 'x4',
+  paddingBottom: 'x8',
+});
 
 export const closeButton = inset({ position: 'absolute', top: 'x4', right: 'x4' });

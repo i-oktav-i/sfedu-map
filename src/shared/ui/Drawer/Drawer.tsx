@@ -1,6 +1,6 @@
 import * as Dialog from '@radix-ui/react-dialog';
 import { Cross2Icon } from '@radix-ui/react-icons';
-import { IconButton } from '@radix-ui/themes';
+import { IconButton, Text } from '@radix-ui/themes';
 import { FC, ReactNode, useEffect, useState } from 'react';
 
 import * as styles from './styles.css';
@@ -34,9 +34,11 @@ export const Drawer: FC<DrawerProps> = ({ isOpen, onClose, title, contentNode })
         aria-describedby={undefined}
         onTransitionEnd={() => setInnerIsOpen(isOpen)}
       >
-        <Dialog.Title className={styles.title}>{title}</Dialog.Title>
+        <Dialog.Title className={styles.title}>
+          <Text size={{ initial: '4', sm: '6' }}>{title}</Text>
+        </Dialog.Title>
 
-        {contentNode}
+        <div className={styles.contentContainer}>{contentNode}</div>
 
         <Dialog.Close className={styles.closeButton} asChild>
           <IconButton variant="ghost" size={'4'} color="gray">
