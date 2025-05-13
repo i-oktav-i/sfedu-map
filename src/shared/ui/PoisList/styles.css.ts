@@ -24,13 +24,10 @@ export const card = recipe({
   ],
   variants: {
     expanded: {
-      true: [
-        container({ height: { initial: 'full', sm: 'unset' } }),
-        inset({ bottom: { initial: 'x0', sm: 'x4' } }),
-      ],
+      true: [container({ height: 'full' }), inset({ bottom: { initial: 'x0', sm: 'x4' } })],
       false: [
         container({
-          height: { initial: 'auto', sm: 'unset' },
+          height: { initial: 'auto', sm: 'full' },
         }),
         inset({ bottom: { initial: 'unset', sm: 'x4' } }),
       ],

@@ -21,7 +21,7 @@ export const Layout: FC = () => {
       <Flex direction={'column'} width={'100%'} height={'100%'}>
         <HeaderWidget />
 
-        <Box asChild flexGrow={'1'}>
+        <Box asChild flexGrow="1" overflow="hidden">
           <main>
             <Outlet />
           </main>
