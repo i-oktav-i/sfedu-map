@@ -1,5 +1,7 @@
+import { PoiId } from '@shared/types';
+
 type RequestFloorParams = {
-  poiId: string;
+  poiId: PoiId;
   floorId: number;
   extension: string;
   abortSignal: AbortSignal;

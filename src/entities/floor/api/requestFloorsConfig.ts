@@ -1,8 +1,10 @@
+import { PoiId } from '@shared/types';
+
 type FloorsConfig = {
   extensions: string[];
 };
 
-export const requestFloorsConfig = async (poiId: string, abortSignal: AbortSignal) => {
+export const requestFloorsConfig = async (poiId: PoiId, abortSignal: AbortSignal) => {
   const response = await fetch(`/sfedu-map/plans/${poiId}/info.json`, { signal: abortSignal });
 
   if (!response.ok) {

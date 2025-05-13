@@ -1,8 +1,9 @@
+import { PoiId } from '@shared/types';
 import { requestFloor } from './requestFloor';
 import { requestFloorsConfig } from './requestFloorsConfig';
 
 export type FetchFloorsParams = {
-  poiId: string;
+  poiId: PoiId;
   abortSignal: AbortSignal;
 };
 
