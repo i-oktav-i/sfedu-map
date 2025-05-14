@@ -14,6 +14,7 @@ export type RequestMMSCClassroomScheduleResponse = {
     id: CurriculaId;
     lessonid: LessonId;
     subjectabbr: string;
+    subjectname: string;
   }[];
 };
 export const requestMMSCClassroomSchedule = async ({

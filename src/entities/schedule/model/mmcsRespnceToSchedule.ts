@@ -26,7 +26,7 @@ export const mmcsResponseToSchedule = ({
   return lessons.reduce((memo, lesson) => {
     const names = curricula
       .filter((curriculum) => curriculum.lessonid === lesson.id)
-      .map((curriculum) => curriculum.subjectabbr);
+      .map((curriculum) => curriculum.subjectabbr || curriculum.subjectname);
 
     const {
       from: fromAsString,
