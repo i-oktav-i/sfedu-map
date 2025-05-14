@@ -1,26 +1,32 @@
 import { WithOptionalKeys } from '@shared/types';
-import { ComponentType, FC, forwardRef } from 'react';
+import { ComponentProps, ComponentType, FC, JSX, forwardRef } from 'react';
 
 export const provideDefaultProps = <
-  T extends Record<string, any>,
-  Keys extends keyof T,
-  DefaultProps extends Pick<T, Keys>,
+  const TComponent extends ComponentType<any> | keyof JSX.IntrinsicElements,
+  Props extends ComponentProps<TComponent>,
+  Keys extends keyof Props,
+  DefaultProps extends Pick<Props, Keys>,
 >(
-  Component: ComponentType<T>,
+  Component: TComponent,
   defaultProps: DefaultProps,
-): FC<WithOptionalKeys<T, Keys>> => {
-  type NewProps = WithOptionalKeys<T, Keys>;
+): FC<WithOptionalKeys<Props, Keys>> => {
+  type NewProps = WithOptionalKeys<Props, Keys>;
 
   const RenderComponent =
-    'initComponent' in Component ? (Component.initComponent as ComponentType<T>) : Component;
+    // @ts-ignore
+    typeof Component !== 'string' && 'initComponent' in Component
+      ? (Component.initComponent as ComponentType<Props>)
+      : Component;
   const allDefaultProps =
-    'initProps' in Component
+    // @ts-ignore
+    typeof Component !== 'string' && 'initProps' in Component
       ? { ...(Component.initProps as DefaultProps), ...defaultProps }
       : defaultProps;
 
   const NewComponent = forwardRef((props, ref) => {
-    const allProps: T = { ...defaultProps, ...props } as unknown as T;
+    const allProps: Props = { ...defaultProps, ...props } as unknown as Props;
 
+    // @ts-ignore
     return <Component {...allProps} {...(ref ? { ref } : {})} />;
   }) as unknown as FC<NewProps>;
 
