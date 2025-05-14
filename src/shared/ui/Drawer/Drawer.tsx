@@ -28,11 +28,15 @@ export const Drawer: FC<DrawerProps> = ({ isOpen, onClose, title, contentNode })
   }, [renderDrawer]);
 
   return (
-    <Dialog.Root open={renderDrawer} onOpenChange={onClose}>
+    <Dialog.Root open={renderDrawer} onOpenChange={onClose} modal={false}>
       <Dialog.Content
         className={styles.drawerContainer({ visible: isOpen })}
         aria-describedby={undefined}
         onTransitionEnd={() => setInnerIsOpen(isOpen)}
+        onPointerDownOutside={(event) => {
+          event.preventDefault();
+        }}
+        aria-modal={innerIsOpen}
       >
         <Dialog.Title className={styles.title}>
           <Text size={{ initial: '4', sm: '6' }}>{title}</Text>
