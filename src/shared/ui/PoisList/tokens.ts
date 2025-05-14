@@ -1,6 +1,6 @@
 import { Box, Card, Flex, Text } from '@radix-ui/themes';
 import { provideDefaultProps } from '@shared/utils';
-import { listItemContainer } from './styles.css';
+import { listItemContainer, searchInputContainer, searchInputForm } from './styles.css';
 
 export const Container = provideDefaultProps(Flex, {
   width: { initial: '100%', sm: '400px' },
@@ -31,3 +31,9 @@ export const ButtonWrapper = provideDefaultProps(Flex, {
 });
 
 export const ListItemContainer = provideDefaultProps(Card, { className: listItemContainer });
+
+export const SearchInputContainer = provideDefaultProps('search', {
+  className: searchInputContainer,
+});
+
+export const SearchInputForm = provideDefaultProps('form', { className: searchInputForm });

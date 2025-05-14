@@ -4,13 +4,15 @@ import { FC, useState } from 'react';
 import { PoisListProps } from '@shared/contracts';
 import { useLocale } from '@shared/locale';
 
+import { ListItem, UList } from '../List';
 import { PoisListItem } from './PoisListItem';
+import { Search } from './Search';
 import { card, listWrapper, toggler } from './styles.css';
-import { Container, ListWrapper } from './tokens';
+import { Container, ListWrapper, SearchInputContainer } from './tokens';
 
 type ViewType = 'onMap' | 'likeList';
 
-export const PoisList: FC<PoisListProps> = ({ pois }) => {
+export const PoisList: FC<PoisListProps> = ({ pois, searchProps }) => {
   const [viewType, setViewType] = useState<ViewType>('onMap');
 
   const { interpolate } = useLocale();
@@ -31,14 +33,18 @@ export const PoisList: FC<PoisListProps> = ({ pois }) => {
         </SegmentedControl.Item>
       </SegmentedControl.Root>
 
-      <ListWrapper asChild className={listWrapper({ visible: isListViewType })}>
-        <ul>
+      <ListWrapper className={listWrapper({ visible: isListViewType })}>
+        <SearchInputContainer>
+          <Search {...searchProps} />
+        </SearchInputContainer>
+
+        <UList>
           {pois.map((poi) => (
-            <li key={poi.name}>
+            <ListItem key={poi.address + poi.name}>
               <PoisListItem {...poi} />
-            </li>
+            </ListItem>
           ))}
-        </ul>
+        </UList>
       </ListWrapper>
     </Container>
   );

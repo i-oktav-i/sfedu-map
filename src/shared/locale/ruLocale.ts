@@ -18,6 +18,10 @@ export const ruInterpolationClient = new InterpolationClient({
     poisList: {
       onMap: 'На карте',
       likeList: 'Cписком',
+      search: {
+        label: 'Поиск',
+        clear: 'Очистить поиск',
+      },
     },
     somethingWrong: {
       title: 'Что-то пошло не так',

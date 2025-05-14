@@ -26,9 +26,6 @@ export const drawerContainer = recipe({
   ],
   variants: {
     visible: {
-      // true: {
-      //   transform: 'translateX(0)',
-      // },
       false: {
         transform: 'translateX(-100%)',
       },
@@ -39,6 +36,8 @@ export const drawerContainer = recipe({
 export const title = container({ padding: 'x4', borderBottom: 'primary' });
 
 export const contentContainer = container({
+  display: 'flex',
+  flexDirection: 'column',
   overflowY: 'auto',
   padding: 'x4',
   paddingBottom: 'x8',

@@ -13,7 +13,7 @@ import { fetchFloors } from '@entities/floor';
 import { FloorsPlanProps } from '@shared/contracts';
 import { useLocale } from '@shared/locale';
 import { PoiId } from '@shared/types';
-import { deferPromise } from '@shared/utils';
+import { defferPromise } from '@shared/utils';
 
 export type FloorsPlanDataProviderProps = {
   poiId: PoiId;
@@ -83,7 +83,7 @@ export const FloorsPlanDataProvider: FC<FloorsPlanDataProviderProps> = ({
     setIsLoading(true);
     setPlansHtml(null);
 
-    deferPromise(fetchFloors({ poiId, abortSignal: signal }), 300)
+    defferPromise(fetchFloors({ poiId, abortSignal: signal }), 300)
       .then((floors) => setPlansHtml(floors))
       .finally(() => setIsLoading(false));
 

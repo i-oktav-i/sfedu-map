@@ -18,6 +18,10 @@ export const enInterpolationClient = new InterpolationClient({
     poisList: {
       onMap: 'On map',
       likeList: 'As a list',
+      search: {
+        label: 'Search',
+        clear: 'Clear search',
+      },
     },
     somethingWrong: {
       title: 'Something went wrong',

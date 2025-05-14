@@ -1,4 +1,5 @@
 import { container, inset } from '@shared/theme';
+import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
 export const card = recipe({
@@ -37,12 +38,13 @@ export const card = recipe({
 
 export const toggler = container({
   display: { sm: 'none' },
+  flex: 'none',
 });
 
 export const listWrapper = recipe({
   base: {
-    listStyle: 'none',
     padding: 0,
+    listStyle: 'none',
   },
   variants: {
     visible: {
@@ -52,3 +54,14 @@ export const listWrapper = recipe({
 });
 
 export const listItemContainer = container({ size: 'full' });
+
+export const searchInputContainer = style([
+  inset({
+    position: 'sticky',
+    top: 'x0',
+  }),
+  container({ zIndex: 'sticky', padding: 'x2' }),
+  { backdropFilter: 'blur(10px)' },
+]);
+
+export const searchInputForm = container({ size: 'full' });
