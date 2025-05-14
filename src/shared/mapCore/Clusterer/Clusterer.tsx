@@ -1,8 +1,10 @@
 import { Feature } from '@yandex/ymaps3-types/packages/clusterer';
-import { FC } from 'react';
-import { LngLat } from 'ymaps3';
+import { FC, useCallback, useContext } from 'react';
+import { LngLat, LngLatBounds } from 'ymaps3';
 
 import { YMapClusterer, YMapClustererProps, YMapMarker, clusterByGrid } from '../YMap3Components';
+import { YMapContext } from '../context';
+import { getClusterBounds, isBreakableCluster } from '../utils';
 import { ClusterProps, CustomFeature, MarkerProps } from './types';
 
 export type ClustererProps<
@@ -25,10 +27,38 @@ export const Clusterer = <
   onClusterClick,
   onMarkerClick,
 }: ClustererProps<TFeatureProperties>) => {
+  const map = useContext(YMapContext);
+
+  const handleClusterClick = useCallback(
+    (clusterFeatures: typeof features) => {
+      if (isBreakableCluster(clusterFeatures)) {
+        if (!map) return;
+
+        const bounds = getClusterBounds(clusterFeatures);
+
+        const xOffset = (bounds[1][0] - bounds[0][0]) * 0.5;
+        const yOffset = (bounds[1][1] - bounds[0][1]) * 0.5;
+
+        const boundsWithOffset: LngLatBounds = [
+          [bounds[0][0] - xOffset, bounds[0][1] - yOffset],
+          [bounds[1][0] + xOffset, bounds[1][1] + yOffset],
+        ];
+
+        map.setLocation({
+          bounds: boundsWithOffset,
+          duration: 300,
+        });
+      } else {
+        onClusterClick?.(clusterFeatures);
+      }
+    },
+    [map, onClusterClick],
+  );
+
   const getClusterLayout = (coordinates: LngLat, clusterFeatures: typeof features) => {
     return (
       <YMapMarker coordinates={coordinates}>
-        <ClusterLayout features={clusterFeatures} onClick={onClusterClick} />
+        <ClusterLayout features={clusterFeatures} onClick={handleClusterClick} />
       </YMapMarker>
     );
   };
