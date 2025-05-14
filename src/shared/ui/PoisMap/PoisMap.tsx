@@ -38,7 +38,11 @@ export const PoisMap: FC<PoisMapProps> = ({
   useEffect(() => {
     if (!selectedPoiId) return;
 
-    mapRef.current?.setLocation({ center: selectedPoiId.location, duration: 300 });
+    mapRef.current?.setLocation({
+      center: selectedPoiId.location,
+      zoom: Math.max(17, mapRef.current.zoom),
+      duration: 300,
+    });
   }, [selectedPoiId]);
 
   if (!ymapsAvailable) return <FallbackContainer>{children}</FallbackContainer>;
