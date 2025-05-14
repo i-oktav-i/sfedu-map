@@ -46,6 +46,10 @@ export const tokensConfig = createGlobalTheme(':root', {
     x6: `calc(${baseSize} * 6)`,
     x7: `calc(${baseSize} * 7)`,
     x8: `calc(${baseSize} * 8)`,
+    x9: `calc(${baseSize} * 9)`,
+    x10: `calc(${baseSize} * 10)`,
+    x11: `calc(${baseSize} * 11)`,
+    x12: `calc(${baseSize} * 12)`,
   },
   radii: {
     infinity: '50%',

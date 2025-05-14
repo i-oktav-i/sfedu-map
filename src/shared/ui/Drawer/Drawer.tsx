@@ -39,6 +39,8 @@ export const Drawer: FC<DrawerProps> = ({ isOpen, onClose, title, contentNode })
         aria-modal={innerIsOpen}
       >
         <Dialog.Title className={styles.title}>
+          <div className={styles.closeButtonPlaceholder} aria-hidden />
+
           <Text size={{ initial: '4', sm: '6' }}>{title}</Text>
         </Dialog.Title>
 

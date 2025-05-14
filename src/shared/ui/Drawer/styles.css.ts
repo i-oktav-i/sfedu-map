@@ -1,4 +1,5 @@
 import { container, inset } from '@shared/theme';
+import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
 export const drawerContainer = recipe({
@@ -44,3 +45,5 @@ export const contentContainer = container({
 });
 
 export const closeButton = inset({ position: 'absolute', top: 'x4', right: 'x4' });
+
+export const closeButtonPlaceholder = style([container({ size: 'x8' }), { float: 'right' }]);
