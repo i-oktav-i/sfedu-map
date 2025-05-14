@@ -51,7 +51,7 @@ export const FloorsPlanDataProvider: FC<FloorsPlanDataProviderProps> = ({
   const humanReadableFloorIndex = currentFloorIndex + 1;
 
   const nextButtonProps = useMemo(() => {
-    const isLastFloor = currentFloorIndex === (plansHtml?.length ?? 0) - 1;
+    const isLastFloor = !plansHtml?.length || currentFloorIndex === (plansHtml?.length ?? 0) - 1;
 
     return {
       text: isLastFloor
@@ -137,7 +137,7 @@ export const FloorsPlanDataProvider: FC<FloorsPlanDataProviderProps> = ({
       element.setAttribute(
         'aria-label',
         interpolate('floorsPlan.classRoomAriaLabel', {
-          values: { id: element.getAttribute('id')! },
+          values: { id: element.getAttribute('data-classroom') || element.getAttribute('id')! },
         }),
       );
       element.addEventListener('click', handleClick);
