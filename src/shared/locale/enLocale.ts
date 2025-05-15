@@ -1,5 +1,5 @@
 import { InterpolationClient } from './InterpolationClient';
-import { nbsp } from './spesialChars';
+import { nbsp } from './speсialChars';
 
 export const enInterpolationClient = new InterpolationClient({
   resource: {
