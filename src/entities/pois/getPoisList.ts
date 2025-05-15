@@ -9,6 +9,7 @@ export const getPoisList = (locale: Locale): Poi[] =>
   poisData
     .map((poi) => ({
       id: poi.id,
+      type: poi.type,
       address: poi.address[locale],
       parts: poi.parts[locale],
       location: poi.location,
