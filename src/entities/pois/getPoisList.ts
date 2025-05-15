@@ -1,16 +1,28 @@
 import { Locale } from '@shared/locale';
 import { Poi } from '@shared/types';
 
+import { initialUserPosition } from '@shared/mapCore';
 import { lazyMap } from '@shared/utils';
 import poisData from './poisData';
 
 export const getPoisList = (locale: Locale): Poi[] =>
-  poisData.map((poi) => ({
-    id: poi.id,
-    address: poi.address[locale],
-    parts: poi.parts[locale],
-    location: poi.location,
-  }));
+  poisData
+    .map((poi) => ({
+      id: poi.id,
+      address: poi.address[locale],
+      parts: poi.parts[locale],
+      location: poi.location,
+    }))
+    .sort((left, right) => {
+      const userCoords = initialUserPosition.coords;
+
+      const leftDistanceToUser =
+        (userCoords[0] - left.location[0]) ** 2 + (userCoords[1] - left.location[1]) ** 2;
+      const rightDistanceToUser =
+        (userCoords[0] - right.location[0]) ** 2 + (userCoords[1] - right.location[1]) ** 2;
+
+      return leftDistanceToUser - rightDistanceToUser;
+    });
 
 export const getFilteredPoisList = async (
   locale: Locale,
