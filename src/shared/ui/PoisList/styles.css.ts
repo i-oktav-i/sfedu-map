@@ -42,13 +42,11 @@ export const toggler = container({
 });
 
 export const listWrapper = recipe({
-  base: {
-    padding: 0,
-    listStyle: 'none',
-  },
+  base: [container({ padding: 'x0', flexDirection: 'column', size: 'full' })],
   variants: {
     visible: {
-      false: container({ display: { initial: 'none', sm: 'block' } }),
+      true: container({ display: 'flex' }),
+      false: container({ display: { initial: 'none', sm: 'flex' } }),
     },
   },
 });
