@@ -20,7 +20,7 @@ export const getClusterBounds = (features: Feature[]): LngLatBounds => {
   return bounds;
 };
 
-const PRESISION = 0.001;
+const PRECISION = 0.0005;
 const MAX_CHECKING_COUNT = 10;
 
 export const isBreakableCluster = (features: Feature[]): boolean => {
@@ -29,8 +29,8 @@ export const isBreakableCluster = (features: Feature[]): boolean => {
   const bounds = getClusterBounds(features);
   const width = bounds[1][0] - bounds[0][0];
   const height = bounds[1][1] - bounds[0][1];
-  const isWidthBreakable = width > PRESISION;
-  const isHeightBreakable = height > PRESISION;
+  const isWidthBreakable = width > PRECISION;
+  const isHeightBreakable = height > PRECISION;
   const isBreakable = isWidthBreakable || isHeightBreakable;
 
   return isBreakable;
