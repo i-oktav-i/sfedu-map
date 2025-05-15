@@ -33,12 +33,12 @@ export const Clusterer = <
   onClusterClick,
   onMarkerClick,
 }: ClustererProps<TFeatureProperties>) => {
-  const map = useContext(YMapContext);
+  const mapRef = useContext(YMapContext);
 
   const handleClusterClick = useCallback(
     (clusterFeatures: typeof features) => {
       if (isBreakableCluster(clusterFeatures)) {
-        if (!map) return;
+        if (!mapRef.current) return;
 
         const bounds = getClusterBounds(clusterFeatures);
 
@@ -50,7 +50,7 @@ export const Clusterer = <
           [bounds[1][0] + xOffset, bounds[1][1] + yOffset],
         ];
 
-        map.setLocation({
+        mapRef.current.setLocation({
           bounds: boundsWithOffset,
           duration: 300,
         });
@@ -58,7 +58,7 @@ export const Clusterer = <
         onClusterClick?.(clusterFeatures);
       }
     },
-    [map, onClusterClick],
+    [mapRef, onClusterClick],
   );
 
   const getClusterLayout = (coordinates: LngLat, clusterFeatures: typeof features) => {

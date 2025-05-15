@@ -25,7 +25,7 @@ export const DefaultMap: FC<DefaultMapProps> = ({ theme, children, ref }) => {
   useImperativeHandle(ref, () => mapRef.current!, [mapRef.current]);
 
   return (
-    <YMapContext.Provider value={mapRef.current}>
+    <YMapContext.Provider value={mapRef}>
       <Box asChild width={'100%'} height={'100%'} position={'relative'}>
         <YMap
           location={useDefault({ center: initialUserPosition.coords, zoom: 14 })}
