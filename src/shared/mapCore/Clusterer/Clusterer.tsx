@@ -2,7 +2,13 @@ import { Feature } from '@yandex/ymaps3-types/packages/clusterer';
 import { FC, useCallback, useContext } from 'react';
 import { LngLat, LngLatBounds } from 'ymaps3';
 
-import { YMapClusterer, YMapClustererProps, YMapMarker, clusterByGrid } from '../YMap3Components';
+import {
+  YMapClusterer,
+  YMapClustererProps,
+  YMapMarker,
+  clusterByGrid,
+  useDefault,
+} from '../YMap3Components';
 import { YMapContext } from '../context';
 import { getClusterBounds, isBreakableCluster } from '../utils';
 import { ClusterProps, CustomFeature, MarkerProps } from './types';
@@ -73,7 +79,7 @@ export const Clusterer = <
 
   return (
     <YMapClusterer
-      method={clusterByGrid({ gridSize: 64 })}
+      method={useDefault(clusterByGrid({ gridSize: 64 }), [])}
       features={features}
       cluster={getClusterLayout as YMapClustererProps['cluster']}
       marker={getMarkerLayout as YMapClustererProps['marker']}
