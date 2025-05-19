@@ -9,6 +9,7 @@ export const card = recipe({
       transition: 'max-height 0.2s',
     },
     container({
+      width: 'full',
       borderRadius: { initial: 'x4', sm: 'x0' },
       zIndex: { initial: 'modal', sm: 'base' },
       backgroundColor: 'primary',
