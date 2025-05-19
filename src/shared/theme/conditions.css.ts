@@ -1,7 +1,7 @@
 export const conditions = {
   conditions: {
     initial: {},
-    xs: { '@media': 'screen and (min-width: 520px)' },
+    xs: { '@media': 'screen and (min-width: 480px)' },
     sm: { '@media': 'screen and (min-width: 768px)' },
     md: { '@media': 'screen and (min-width: 1024px)' },
     lg: { '@media': 'screen and (min-width: 1280px)' },

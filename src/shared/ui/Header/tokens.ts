@@ -1,14 +1,18 @@
 import { Box, Flex, Grid, Heading } from '@radix-ui/themes';
 import { provideDefaultProps } from '@shared/utils';
+import { headerContainer, headerWrapper } from './styles.css';
+
+export const HeaderWrapper = provideDefaultProps(Box, { className: headerWrapper });
 
 export const GridContainer = provideDefaultProps(Grid, {
+  m: 'auto',
   columns: '1fr 1fr 1fr',
   rows: 'auto',
   justify: 'between',
   align: 'center',
   py: '3',
   px: '6',
-  style: { boxShadow: 'var(--shadow-1)' },
+  className: headerContainer,
 });
 
 export const LogoContainer = provideDefaultProps(Box, {

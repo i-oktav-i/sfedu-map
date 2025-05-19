@@ -71,6 +71,13 @@ export const tokensConfig = createGlobalTheme(':root', {
     notification: '7000',
     aboveAll: '99999',
   },
+  breakpoints: {
+    xs: '480px',
+    sm: '768px',
+    md: '1024px',
+    lg: '1280px',
+    xl: '1640px',
+  },
 });
 
 export const [themeDependentTokensClassName, themeDependentTokensConfig] = createTheme({
