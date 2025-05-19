@@ -1,7 +1,7 @@
 import { HeaderProps } from '@shared/contracts';
 import { FC } from 'react';
 import { HeaderSelect } from './HeaderSelect';
-import { GridContainer, LogoContainer, SelectsContainer, Title } from './styles';
+import { GridContainer, LogoContainer, SelectsContainer, Title } from './tokens';
 
 import { localeIconsMap, themeIconsMap } from './icons';
 
