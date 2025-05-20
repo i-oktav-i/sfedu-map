@@ -9,6 +9,7 @@ export const drawerContainer = recipe({
       flexDirection: 'column',
       width: 'full',
       height: 'full',
+      padding: 'x0',
       backgroundColor: 'primary',
       border: { initial: 'none', sm: 'primary' },
       zIndex: 'modal',

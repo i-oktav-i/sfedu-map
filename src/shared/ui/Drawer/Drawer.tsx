@@ -30,6 +30,7 @@ export const Drawer: FC<DrawerProps> = ({ isOpen, onClose, title, contentNode })
   return (
     <Dialog.Root open={renderDrawer} onOpenChange={onClose} modal={false}>
       <Dialog.Content
+        asChild
         className={styles.drawerContainer({ visible: isOpen })}
         aria-describedby={undefined}
         onTransitionEnd={() => setInnerIsOpen(isOpen)}
@@ -38,19 +39,21 @@ export const Drawer: FC<DrawerProps> = ({ isOpen, onClose, title, contentNode })
         }}
         aria-modal={innerIsOpen}
       >
-        <Dialog.Title className={styles.title}>
-          <div className={styles.closeButtonPlaceholder} aria-hidden />
+        <dialog>
+          <Dialog.Title className={styles.title}>
+            <div className={styles.closeButtonPlaceholder} aria-hidden />
 
-          <Text size={{ initial: '4', sm: '6' }}>{title}</Text>
-        </Dialog.Title>
+            <Text size={{ initial: '4', sm: '6' }}>{title}</Text>
+          </Dialog.Title>
 
-        <div className={styles.contentContainer}>{contentNode}</div>
+          <div className={styles.contentContainer}>{contentNode}</div>
 
-        <Dialog.Close className={styles.closeButton} asChild>
-          <IconButton variant="ghost" size={'4'} color="gray">
-            <Cross2Icon width={'20px'} height={'20px'} />
-          </IconButton>
-        </Dialog.Close>
+          <Dialog.Close className={styles.closeButton} asChild>
+            <IconButton variant="ghost" size={'4'} color="gray">
+              <Cross2Icon width={'20px'} height={'20px'} />
+            </IconButton>
+          </Dialog.Close>
+        </dialog>
       </Dialog.Content>
     </Dialog.Root>
   );
