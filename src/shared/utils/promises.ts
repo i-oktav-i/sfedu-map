@@ -12,30 +12,40 @@ export const createMicroTask = <T>(callback: () => T) => {
   });
 };
 
-export const createMacroTask = <T>(callback: () => T) => {
-  const { promise, resolve } = Promise.withResolvers<T>();
+export const createMacroTask = <T>(callback: () => T, abortSignal?: AbortSignal) => {
+  const { promise, resolve, reject } = Promise.withResolvers<T>();
 
-  setTimeout(() => resolve(callback()), 0);
+  const timeoutId = setTimeout(() => resolve(callback()), 0);
+
+  abortSignal?.addEventListener('abort', () => {
+    clearTimeout(timeoutId);
+    reject(new Error('Aborted'));
+  });
 
   return promise;
 };
 
 export const lazyMap = <T, U>(
   array: T[],
-  mapper: (item: T, index: number) => U,
+  mapper: (item: T, index: number, ctx: T[]) => U,
   abortSignal?: AbortSignal,
 ): Promise<U[]> => {
   const generator = function* () {
     for (let index = 0; index < array.length; index++) {
       const item = array[index];
 
-      if (abortSignal?.aborted) throw new Error('Aborted');
+      if (abortSignal?.aborted) {
+        throw new Error('Aborted');
+      }
 
       yield createMacroTask(() => {
-        return mapper(item, index);
+        return mapper(item, index, array);
       });
     }
   };
 
-  return Array.fromAsync(generator()).catch(() => []);
+  return Array.fromAsync(generator()).catch((error) => {
+    console.log('generator error', error);
+    return [];
+  });
 };
