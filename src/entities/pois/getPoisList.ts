@@ -29,7 +29,7 @@ export const getFilteredPoisList = async (
   locale: Locale,
   searchString: string,
   abortSignal: AbortSignal,
-) => {
+): Promise<Poi[]> => {
   try {
     const poisWithMatches = await lazyMap(
       poisData,
@@ -50,6 +50,7 @@ export const getFilteredPoisList = async (
             address: poi.address[locale],
             parts: poi.parts[locale],
             location: poi.location,
+            type: poi.type,
           },
           count: matchCount,
         };
