@@ -13,14 +13,26 @@ export const createMicroTask = <T>(callback: () => T) => {
 };
 
 export const createMacroTask = <T>(callback: () => T, abortSignal?: AbortSignal) => {
+  if (abortSignal?.aborted) return Promise.reject(new Error('Aborted'));
+
   const { promise, resolve, reject } = Promise.withResolvers<T>();
 
-  const timeoutId = setTimeout(() => resolve(callback()), 0);
+  const timeoutId = setTimeout(() => {
+    cleanup();
+    resolve(callback());
+  }, 0);
 
-  abortSignal?.addEventListener('abort', () => {
+  const onAbort = () => {
     clearTimeout(timeoutId);
+    cleanup();
     reject(new Error('Aborted'));
-  });
+  };
+
+  function cleanup() {
+    abortSignal?.removeEventListener('abort', onAbort);
+  }
+
+  abortSignal?.addEventListener('abort', onAbort);
 
   return promise;
 };
@@ -37,9 +49,7 @@ const macroTasksGenerator = function* <T, U>(
       throw new Error('Aborted');
     }
 
-    yield createMacroTask(() => {
-      return mapper(item, index, array);
-    });
+    yield createMacroTask(() => mapper(item, index, array), abortSignal);
   }
 };
 
