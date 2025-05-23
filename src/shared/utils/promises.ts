@@ -25,27 +25,30 @@ export const createMacroTask = <T>(callback: () => T, abortSignal?: AbortSignal)
   return promise;
 };
 
+const macroTasksGenerator = function* <T, U>(
+  array: T[],
+  mapper: (item: T, index: number, ctx: T[]) => U,
+  abortSignal?: AbortSignal,
+) {
+  for (let index = 0; index < array.length; index++) {
+    const item = array[index];
+
+    if (abortSignal?.aborted) {
+      throw new Error('Aborted');
+    }
+
+    yield createMacroTask(() => {
+      return mapper(item, index, array);
+    });
+  }
+};
+
 export const lazyMap = <T, U>(
   array: T[],
   mapper: (item: T, index: number, ctx: T[]) => U,
   abortSignal?: AbortSignal,
-): Promise<U[]> => {
-  const generator = function* () {
-    for (let index = 0; index < array.length; index++) {
-      const item = array[index];
-
-      if (abortSignal?.aborted) {
-        throw new Error('Aborted');
-      }
-
-      yield createMacroTask(() => {
-        return mapper(item, index, array);
-      });
-    }
-  };
-
-  return Array.fromAsync(generator()).catch((error) => {
+): Promise<U[]> =>
+  Array.fromAsync(macroTasksGenerator(array, mapper, abortSignal)).catch((error) => {
     console.log('generator error', error);
     return [];
   });
-};
